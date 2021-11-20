@@ -1,0 +1,51 @@
+package CollectionsFrameworkASSIGNMENTS;
+import java.util.*;
+import java.util.Collections;
+
+
+
+public class StudentMarks {		
+		
+			public class Student {				
+				String name;
+				char grade;
+				int marks;				
+			public Student(String name,char grade,int marks) {
+				this.name=name;
+				this.grade=grade;
+				this.marks=marks;
+			}
+				public void main(String[] args) {	
+
+				Student s1= new Student("lmn",'A',100);
+				Student s2= new Student("xyz",'B',40);
+				Student s3= new Student("abc",'C',75);
+				Student s4= new Student("uvw",'D',50);		
+				Student s5= new Student("pqr",'E',80);		
+				ArrayList<Integer>listm=new ArrayList<Integer>();
+				listm.add(s1.marks);
+				listm.add(s2.marks);
+				listm.add(s3.marks);
+				listm.add(s4.marks);
+				listm.add(s5.marks);
+				Collections.sort(listm,Collections.reverseOrder());		
+				
+				System.out.println("List after sorting: ");	
+				
+				for (int mark:listm)
+				{ 
+				System.out.println(mark);	
+					
+					
+					
+				}
+				}
+				
+				
+			}
+
+			
+
+	}
+
+

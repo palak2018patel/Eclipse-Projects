@@ -1,0 +1,46 @@
+package CollectionsFrameworkASSIGNMENTS;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+
+	public class Student {	
+	
+		String name;
+		int id;
+		int age;	
+	
+	public Student(String name,int id,int age) {
+		this.name=name;
+		this.id=id;
+		this.age=age;
+	}
+
+		public static void main(String[] args) {	
+		ArrayList<Object> Arr= new ArrayList<Object>();
+		Student s1= new Student("lmn",1,9);
+		Student s2= new Student("xyz",2,9);
+		Student s3= new Student("def",3,9);
+		Student s4= new Student("uvw",4,9);		
+		Student s5= new Student("pqr",5,9);
+		
+		
+		ArrayList<String>list=new ArrayList<String>();
+		list.add(s1.name);
+		list.add(s2.name);
+		list.add(s3.name);
+		list.add(s4.name);
+		list.add(s5.name);
+		Collections.sort(list);
+		
+		
+		
+		
+		System.out.println("List after sorting: "+list);	
+		
+			
+		}
+		
+		
+	}
+
+	

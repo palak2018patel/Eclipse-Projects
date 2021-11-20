@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>.org.eclipse.jdt.core.external.folders</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+	</buildSpec>
+	<natures>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>.link1</name>
+			<type>2</type>
+			<location>C:/Users/palak/Desktop/MithunSirMavenProject/sfdc_35_testcase/target/classes/META-INF/maven/sfdc_35_testcase</location>
+		</link>
+		<link>
+			<name>.link3</name>
+			<type>2</type>
+			<location>C:/Users/palak/Desktop/MithunSirMavenProject/sfdc_35_testcase/src/test/java/sfdc_35_testcase</location>
+		</link>
+	</linkedResources>
+</projectDescription>

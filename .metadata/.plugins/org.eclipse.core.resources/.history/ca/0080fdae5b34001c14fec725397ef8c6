@@ -1,0 +1,38 @@
+package Javaexam;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+
+public class Q4PalindromeOfIntegers {
+	private static boolean palindrome(String s1) {
+		{
+			int length=s1.length();
+			for(int i=0; i<length/2;i++) {
+				if(s1.charAt(i)!=s1.charAt(length-1-i)) {
+					return false;
+				}	
+				return true;
+			}
+		}
+		return false;
+	}		
+
+	public static void main(String[] args) {
+		int []arr= {12,4545,1331,1524};		
+		ArrayList<Integer>list=new ArrayList<Integer>();
+		list.add(12);
+		list.add(4545);
+		list.add(1331);
+		list.add(1524);
+		Iterator<Integer>itr=list.iterator();
+		while (itr.hasNext()) {
+			String s=String.valueOf(list);
+			System.out.println("Integer"+list+"is Palindrome" +palindrome(s));
+			
+		}
+			
+		
+	}
+
+}

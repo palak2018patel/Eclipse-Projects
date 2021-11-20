@@ -1,0 +1,192 @@
+package sfdc.tests;
+
+import java.io.IOException;
+import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+import sfdc.pages.HomeTabPage;
+import sfdc.pages.LeadsPage;
+
+public class HomeTab extends BaseTest {
+	static HomeTabPage homeTabPage;
+	
+	@BeforeSuite
+	public void setUp() throws Exception  {		
+		//initializeLogging();		
+		 driver= getDriver("chrome");
+			 
+		 initializeReport("HomeTab");			
+	}		
+	
+	@BeforeMethod
+	public void launchApp() throws IOException {
+		driver= getDriver("chrome");
+		driver.get(dataUtil.readAccounts("prod.url"));
+		 homeTabPage = new HomeTabPage(driver);		
+		driver.manage().window().maximize();
+		bu.waitForElement(loginPage.eUserName,driver);
+		//WebElement userName =driver.findElement(By.name("username"));
+		//bu.waitForElement(userName,driver);
+	}
+	
+	@BeforeMethod            ////////this will always execute then how will test cases be tested for forget pw or wrong pw??????? also change to refactor style
+	public void loginToApp() throws IOException{			
+				Assert.assertTrue(loginPage.isLoginPageDisplayed());
+				bu.isElementVisible(loginPage.eUserName);
+				bu.sendText(dataUtil.readAccounts("prod.username"), loginPage.eUserName);	
+				bu.isElementVisible(loginPage.ePassword);
+				bu.sendText(dataUtil.readAccounts("prod.password1"), loginPage.ePassword);		
+				bu.clickOnElement(loginPage.eLoginButton);	
+				}	
+	
+	@Test
+	public void VerifyFirstLastNameDisplay_TC33() throws IOException{
+	
+	bu.isElementVisible(homeTabPage.homeTab);
+	bu.clickOnElement(homeTabPage.homeTab);
+	
+	bu.isElementVisible(homeTabPage.firstLastNameLink);
+	bu.clickOnElement(homeTabPage.firstLastNameLink);	
+	}	
+	
+	@Test
+	public  void VerifyFirstLastNameDisplay_TC34() throws IOException{
+	
+	bu.isElementVisible(homeTabPage.homeTab);
+	bu.clickOnElement(homeTabPage.homeTab);
+		
+	bu.isElementVisible(homeTabPage.firstLastNameLink);
+	bu.clickOnElement(homeTabPage.firstLastNameLink);	
+	
+	bu.isElementVisible(homeTabPage.editProfile);
+	bu.clickOnElement(homeTabPage.editProfile);	
+	
+	bu.isElementVisible(homeTabPage.iframe);
+	bu.switchFrame( driver,homeTabPage.iframe);
+	
+	bu.isElementVisible(homeTabPage.aboutTab);
+	bu.clickOnElement(homeTabPage.aboutTab);
+	
+	bu.isElementVisible(homeTabPage.lastName);
+	bu.clearText(homeTabPage.lastName);
+	bu.sendText(dataUtil.readAccounts("prod.Abcd"),homeTabPage.lastName );
+	
+	bu.isElementVisible(homeTabPage.saveAll);
+	bu.clickOnElement(homeTabPage.saveAll);
+	
+	}	
+	
+	@Test
+		public void BlockingEventInCalendar_TC36() throws IOException{
+		
+		bu.isElementVisible(homeTabPage.homeTab);
+		bu.clickOnElement(homeTabPage.homeTab);			
+		
+		bu.isElementVisible(homeTabPage.eCurrentDateLink);
+		bu.clickOnElement(homeTabPage.eCurrentDateLink);
+		
+		bu.isElementVisible(homeTabPage.eightpmLink);
+		bu.clickOnElement(homeTabPage.eightpmLink);
+		
+		bu.isElementVisible(homeTabPage.eComboIcon);
+		bu.clickOnElement(homeTabPage.eComboIcon);
+		
+		bu.isElementVisible(homeTabPage.eotherbox);
+		bu.sendText(dataUtil.readAccounts("prod.Comboselect"), homeTabPage.eotherbox);
+		bu.clickOnElement(homeTabPage.eotherbox);
+		
+		bu.isElementVisible(homeTabPage.endTime);
+		bu.clickOnElement(homeTabPage.endTime);
+		
+		bu.isElementVisible(homeTabPage.ninepmLink);
+		bu.clickOnElement(homeTabPage.ninepmLink);
+		
+		bu.isElementVisible(homeTabPage.eSave);
+		bu.clickOnElement(homeTabPage.eSave);		
+		
+		}		
+	
+	@Test
+	public void BlockingEventInCalendarWithRecurrence_TC37() throws IOException{
+	
+		bu.isElementVisible(homeTabPage.homeTab);
+		bu.clickOnElement(homeTabPage.homeTab);			
+		
+		bu.isElementVisible(homeTabPage.eCurrentDateLink);
+		bu.clickOnElement(homeTabPage.eCurrentDateLink);
+		
+		bu.isElementVisible(homeTabPage.eightpmLink);
+		bu.clickOnElement(homeTabPage.fourpmLink);
+		
+		bu.isElementVisible(homeTabPage.eComboIcon);
+		bu.clickOnElement(homeTabPage.eComboIcon);
+		
+		bu.isElementVisible(homeTabPage.eotherbox);
+		bu.sendText(dataUtil.readAccounts("prod.Comboselect"), homeTabPage.eotherbox);
+		bu.clickOnElement(homeTabPage.eotherbox);
+		
+		bu.isElementVisible(homeTabPage.endTime);
+		bu.clickOnElement(homeTabPage.endTime);
+		
+		bu.isElementVisible(homeTabPage.sevenpmLink);
+		bu.clickOnElement(homeTabPage.sevenpmLink);
+		
+		bu.isElementVisible(homeTabPage.createRecurringSeries);
+		bu.clickOnElement(homeTabPage.createRecurringSeries);
+		
+		bu.isElementVisible(homeTabPage.weeklybutton);
+		bu.clickOnElement(homeTabPage.weeklybutton);
+		
+		bu.isElementVisible(homeTabPage.recurEnddate);
+		bu.clickOnElement(homeTabPage.recurEnddate);
+		
+		bu.isElementVisible(homeTabPage.twoWeeksLater);
+		bu.clickOnElement(homeTabPage.twoWeeksLater);
+		
+		bu.isElementVisible(homeTabPage.eSave);
+		bu.clickOnElement(homeTabPage.eSave);	
+		
+		bu.isElementVisible(homeTabPage.monthViewIcon);
+		bu.clickOnElement(homeTabPage.monthViewIcon);		
+		
+		bu.isElementVisible(homeTabPage.calendarDisplay);
+		
+		//bu.clickOnElement(homeTabPage);
+		
+		}	
+		
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+

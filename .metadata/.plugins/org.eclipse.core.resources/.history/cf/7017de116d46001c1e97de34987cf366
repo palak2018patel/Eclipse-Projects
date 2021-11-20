@@ -1,0 +1,278 @@
+package sfdc.tests;
+
+import java.io.IOException;
+
+import org.testng.Assert;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+import sfdc.pages.AllTabPage;
+import sfdc.pages.CreateAccountPage;
+import sfdc.pages.LoginPage;
+
+public class CreateAccount extends BaseTest{	
+	
+	//static CreateAccountPage createAccountPage;
+		
+	@BeforeSuite
+	public void setUp() {		
+		//initializeLogging();		
+		 driver= getDriver("chrome");		 			 
+		 initializeReport("CreateAccount");			
+	}
+	
+	@AfterSuite
+	public void finishTest()
+	{
+		report.flush();
+	}
+	
+	@BeforeTest
+	public void launchApp() throws IOException
+	{
+		driver = getDriver("chrome");
+		loginPage = new LoginPage(driver);
+		createAccountPage = new CreateAccountPage(driver);
+		driver.get(dataUtil.readAccounts("prod.url"));
+		driver.manage().window().maximize();
+		bu.waitForElement(loginPage.eUserName,driver);
+		
+	}
+	
+	@BeforeMethod            
+	public void loginToApp() throws IOException, InterruptedException{
+	{			
+				Assert.assertTrue(loginPage.isLoginPageDisplayed());
+				bu.isElementVisible(loginPage.eUserName);
+				bu.sendText(dataUtil.readAccounts("prod.username"), loginPage.eUserName);	
+				bu.isElementVisible(loginPage.ePassword);
+				bu.sendText(dataUtil.readAccounts("prod.password1"), loginPage.ePassword);		
+				bu.clickOnElement(loginPage.eLoginButton);
+				Thread.sleep(3000);
+	}
+
+	@Test
+	public void create_An_Account_TC10() throws IOException,InterruptedException{
+		
+		bu.isElementVisible(createAccountPage.eAccountsTabLink);
+		bu.clickOnElement(createAccountPage.eAccountsTabLink);
+	
+		bu.isElementVisible(createAccountPage.eNewAccBton);
+		bu.clickOnElement(createAccountPage.eNewAccBton);
+		
+		bu.isElementVisible(createAccountPage.eNewAccName);
+		bu.sendText(dataUtil.readAccounts("prod.newAccountName"), createAccountPage.eNewAccName);
+		bu.clickOnElement(createAccountPage.eNewAccName);	
+		
+		bu.isElementVisible(createAccountPage.eAccSave);
+		bu.clickOnElement(createAccountPage.eAccSave);
+	}
+	
+	@Test
+	public void create_new_view_TC11() throws IOException, InterruptedException{
+		
+		bu.isElementVisible(createAccountPage.eAccountsTabLink);
+		bu.clickOnElement(createAccountPage.eAccountsTabLink);
+		
+		bu.isElementVisible(createAccountPage.eAccCreateNewView);
+		bu.clickOnElement(createAccountPage.eAccCreateNewView);
+	
+		bu.isElementVisible(createAccountPage.eAccViewName);
+		bu.clearText(createAccountPage.eAccViewName);
+		bu.sendText(dataUtil.readAccounts("prod.accNewViewName1"), createAccountPage.eAccViewName);
+		bu.clickOnElement(createAccountPage.eAccViewName);
+	
+		
+		bu.isElementVisible(createAccountPage.eAccViewUniqueName);
+		bu.clearText(createAccountPage.eAccViewUniqueName);
+		bu.wait();
+		bu.sendText(dataUtil.readAccounts("prod.accViewUniqueName1"), createAccountPage.eAccViewUniqueName);
+		bu.clickOnElement(createAccountPage.eAccViewUniqueName);	
+		
+		bu.isElementVisible(createAccountPage.eAccSave);
+		bu.clickOnElement(createAccountPage.eAccSave);	
+		
+	}
+	
+	public void Editview_TC12() throws IOException,InterruptedException{
+		
+		bu.isElementVisible(createAccountPage.eAccountsTabLink);
+		bu.clickOnElement(createAccountPage.eAccountsTabLink);
+		
+		bu.isElementVisible(createAccountPage.eViewNameToEdit);
+		bu.clickOnElement(createAccountPage.eViewNameToEdit);	
+		
+		bu.isElementVisible(createAccountPage.eEditLink);
+		bu.clickOnElement(createAccountPage.eEditLink);
+	
+		
+		bu.isElementVisible(createAccountPage.eViewNameToEdit);
+		bu.clearText(createAccountPage.eViewNameToEdit);
+		bu.sendText(dataUtil.readAccounts("prod.accNewViewName2"), createAccountPage.eViewNameToEdit);
+		bu.clickOnElement(createAccountPage.eViewNameToEdit);
+	
+		
+		bu.isElementVisible(createAccountPage.eFilterfieldAccount);
+		bu.clickOnElement(createAccountPage.eFilterfieldAccount);
+	
+		
+		bu.isElementVisible(createAccountPage.eFilterAccNameOption);
+		bu.clickOnElement(createAccountPage.eFilterAccNameOption);
+	
+		
+		bu.isElementVisible(createAccountPage.eFilterfieldOperator);
+		bu.clickOnElement(createAccountPage.eFilterfieldOperator);
+	
+		
+		bu.isElementVisible(createAccountPage.eFilterOperatorContains);
+		bu.clickOnElement(createAccountPage.eFilterOperatorContains);
+	
+		
+		bu.isElementVisible(createAccountPage.eFilterValue);
+		bu.sendText(dataUtil.readAccounts("prod.operatorValue"), createAccountPage.eFilterValue);
+		
+	
+		bu.isElementVisible(createAccountPage.eLastActivityTab);
+		bu.clickOnElement(createAccountPage.eLastActivityTab);
+	
+		
+		bu.isElementVisible(createAccountPage.eAddBtn);
+		bu.clickOnElement(createAccountPage.eAddBtn);
+	
+		
+		bu.isElementVisible(createAccountPage.eAccSave);
+		bu.clickOnElement(createAccountPage.eAccSave);
+	}
+	
+	public void MergeAccounts_TC13() throws IOException, InterruptedException{
+		
+		bu.isElementVisible(createAccountPage.eAccountsTabLink);
+		bu.clickOnElement(createAccountPage.eAccountsTabLink);
+		
+		bu.isElementVisible(createAccountPage.eMergeAccLink);
+		bu.clickOnElement(createAccountPage.eMergeAccLink);
+	
+		
+		bu.isElementVisible(createAccountPage.eAccName1ToMerge);
+		bu.sendText(dataUtil.readAccounts("prod.accNameToMerge"), createAccountPage.eAccName1ToMerge);
+		//bu.clickOnElement();
+	
+		
+		bu.isElementVisible(createAccountPage.eFindAccBtn);
+		bu.clickOnElement(createAccountPage.eFindAccBtn);
+	
+		
+		//bu.isElementVisible(createAccountPage.checkbox);no need bcos all come auto chkd
+		//bu.clickOnElement(createAccountPage.checkbox);
+		
+		
+		bu.isElementVisible(createAccountPage.eNext);
+		bu.clickOnElement(createAccountPage.eNext);
+		
+		bu.isElementVisible(createAccountPage.eMergeBtn);//not clicking bcos it will happen and nxt time tc not exceutable
+		//bu.clickOnElement(); isVisible is validating that TC has passed
+		
+		//bu.isElementVisible();
+		//bu.clickOnElement();
+		
+		//bu.isElementVisible();
+		//bu.clickOnElement();
+	}	
+		
+	
+	public void CreateAccountReport_TC14() throws IOException, InterruptedException{
+		
+		bu.isElementVisible(createAccountPage.eAccountsTabLink);
+		bu.clickOnElement(createAccountPage.eAccountsTabLink);
+		
+		bu.isElementVisible(createAccountPage.AccWithLastActivityGrtr30days);
+		bu.clickOnElement(createAccountPage.AccWithLastActivityGrtr30days);		
+		
+		bu.isElementVisible(createAccountPage.eDatefieldDrpDwn);
+		bu.clickOnElement(createAccountPage.eDatefieldDrpDwn);
+		
+		
+		bu.isElementVisible(createAccountPage.eCreatedDate);
+		bu.sendText(dataUtil.readAccounts("prod.accCreateStartsDate"), createAccountPage.eCreatedDate);
+		bu.clickOnElement(createAccountPage.eCreatedDate);
+		
+		
+		bu.isElementVisible(createAccountPage.eToFieldEndDate);
+		bu.sendText(dataUtil.readAccounts("prod.accCreateEndDate"), createAccountPage.eToFieldEndDate);
+		bu.clickOnElement(createAccountPage.eToFieldEndDate);
+				
+		bu.isElementVisible(createAccountPage.eSaveBtn);
+		bu.clickOnElement(createAccountPage.eSaveBtn);
+		
+		bu.isElementVisible(createAccountPage.eReportNamePopUpWindow);
+		bu.sendText(dataUtil.readAccounts("prod.accReportName"), createAccountPage.eReportNamePopUpWindow);
+		bu.clickOnElement(createAccountPage.eReportNamePopUpWindow);
+		
+		bu.isElementVisible(createAccountPage.eReportUniqueName);
+		bu.clickOnElement(createAccountPage.eReportUniqueName);
+		
+		bu.isElementVisible(createAccountPage.eCreateAccSaveandRun);
+		bu.clickOnElement(createAccountPage.eCreateAccSaveandRun);
+		
+		bu.isElementVisible(createAccountPage.eReportDisplayPage);
+	}
+		
+		/*bu.isElementVisible(createAccountPage);
+		bu.clickOnElement();
+		
+		bu.isElementVisible(createAccountPage);
+		bu.clickOnElement();
+		
+		bu.isElementVisible(createAccountPage);
+		bu.clickOnElement();
+		
+		bu.isElementVisible(createAccountPage);
+		bu.clickOnElement();
+		
+		bu.isElementVisible(createAccountPage);
+		bu.clickOnElement();*/
+			
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		
+@Test
+public void createAccount_TC12() {
+	//launchApp();
+	//loginApp();
+	//clickOnAccounts();
+	//createNewView();
+	Assert.assertNotNull(createAccountPage.clickOnAccounts());
+	createAccountPage.createNewView();
+}
+	
+	
+	
+	
+
+
+
+	
+
+}

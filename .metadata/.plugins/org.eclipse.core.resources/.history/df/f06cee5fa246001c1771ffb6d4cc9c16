@@ -1,0 +1,129 @@
+package sfdc.tests;
+
+import java.io.IOException;
+import java.lang.reflect.Method;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+import org.testng.annotations.Listeners;
+import sfdc.utilities.ListenersUtilities;
+import sfdc.pages.LeadsPage;
+import sfdc.pages.LoginPage;
+
+public class Leads extends BaseTest {
+	
+	//static LeadsPage leadsPage;
+		@BeforeSuite
+		public void setUp() throws Exception  {		
+			                    //initializeLogging();		
+			 driver= getDriver("chrome");
+			 initializeReport("Leads");			
+		
+		}
+		@AfterSuite
+		public void finishTest()
+		{
+			report.flush();
+		}
+		
+		@BeforeMethod
+		public void launchApp() throws IOException {
+			driver = getDriver("chrome");
+			driver.get(dataUtil.readAccounts("prod.url"));
+			leadsPage = new LeadsPage(driver);		
+			driver.manage().window().maximize();
+			bu.waitForElement(loginPage.eUserName,driver);
+			//WebElement userName =driver.findElement(By.name("username"));
+			//bu.waitForElement(userName,driver);
+		}
+		
+		@BeforeMethod            ////////this will always execute then how will test cases be tested for forget pw or wrong pw??????? also change to refactor style
+		public void loginToApp() throws IOException, InterruptedException{			
+					Assert.assertTrue(loginPage.isLoginPageDisplayed());
+					bu.isElementVisible(loginPage.eUserName);
+					bu.sendText(dataUtil.readAccounts("prod.username"), loginPage.eUserName);	
+					bu.isElementVisible(loginPage.ePassword);
+					bu.sendText(dataUtil.readAccounts("prod.password1"), loginPage.ePassword);		
+					bu.clickOnElement(loginPage.eLoginButton);
+					Thread.sleep(3000);
+					}
+		
+		@AfterMethod
+		public void exit() {
+
+			driver.quit();
+		}
+
+		@Test
+		public void checkLeadsTabLink_TC20() throws InterruptedException{
+			bu.isElementVisible(leadsPage.eLeadsTab);
+			bu.clickOnElement(leadsPage.eLeadsTab);
+			
+		}
+		
+		@Test
+		public void  LeadsSelectView_TC21() throws InterruptedException{
+			bu.isElementVisible(leadsPage.eLeadsTab);
+			bu.clickOnElement(leadsPage.eLeadsTab);
+			
+			bu.isElementVisible(leadsPage.eViewLeads);
+			bu.clickOnElement(leadsPage.eViewLeads);
+			
+			bu.isElementVisible(leadsPage.eUserMenu);
+			bu.clickOnElement(leadsPage.eUserMenu);
+			
+			bu.isElementVisible(leadsPage.eLogOut);
+			bu.clickOnElement(leadsPage.eLogOut);				
+		}	
+		
+		@Test
+		public void LeadsGoDefaultView_TC22()throws IOException{
+			bu.isElementVisible(leadsPage.eLeadsTab);
+			bu.clickOnElement(leadsPage.eLeadsTab);			
+			bu.isElementVisible(leadsPage.eViewLeads);
+			bu.clickOnElement(leadsPage.eViewLeads);			
+			bu.isElementVisible(leadsPage.eTodaysLead);
+			bu.clickOnElement(leadsPage.eTodaysLead);			
+			bu.isElementVisible(leadsPage.eUserMenu);
+			bu.clickOnElement(leadsPage.eUserMenu);			
+			bu.isElementVisible(leadsPage.eLogOut);
+			bu.clickOnElement(leadsPage.eLogOut);	
+			driver.get(dataUtil.readAccounts("prod.url"));
+			bu.waitForElement(loginPage.eUserName,driver);
+			Assert.assertTrue(loginPage.isLoginPageDisplayed());
+			bu.isElementVisible(loginPage.eUserName);
+			bu.sendText(dataUtil.readAccounts("prod.username"),loginPage.eUserName);
+			bu.isElementVisible(loginPage.ePassword);
+			bu.sendText(dataUtil.readAccounts("prod.password1"),loginPage.ePassword);
+			bu.isElementVisible(loginPage.eLoginButton);
+			bu.clickOnElement(loginPage.eLoginButton);
+			bu.isElementVisible(leadsPage.eLeadsTab);
+			bu.clickOnElement(leadsPage.eLeadsTab);			
+			bu.isElementVisible(leadsPage.eGOLeads);
+			bu.clickOnElement(leadsPage.eGOLeads);			
+		}	
+		
+		@Test
+		public void TodaysLeads_TC23() throws InterruptedException{
+			bu.isElementVisible(leadsPage.eLeadsTab);
+			bu.clickOnElement(leadsPage.eLeadsTab);
+			bu.isElementVisible(leadsPage.eViewLeads);
+			bu.clickOnElement(leadsPage.eViewLeads);				
+			bu.isElementVisible(leadsPage.eTodaysLead);
+			bu.clickOnElement(leadsPage.eTodaysLead);
+			bu.isElementVisible(leadsPage.eUserMenu);
+			bu.clickOnElement(leadsPage.eUserMenu);			
+			bu.isElementVisible(leadsPage.eLogOut);
+			bu.clickOnElement(leadsPage.eLogOut);			
+			
+		}		
+				
+		}
+

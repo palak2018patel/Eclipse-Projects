@@ -1,0 +1,53 @@
+package sfdc.pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+import sfdc.tests.BaseTest;
+
+public class HomeTabPage extends BaseTest {
+	
+	public HomeTabPage(WebDriver driver) {
+		PageFactory.initElements(driver,this);//constructor
+	}
+	
+	@FindBy(xpath="//a[(@title='Home Tab')]")
+	public WebElement homeTab ;
+	
+	@FindBy(xpath="//*[@id=\"ptBody\"]/div/div[2]/span[1]/h1/a")
+	public WebElement firstLastNameLink ;
+	
+	@FindBy(xpath="//*[@id=\"chatterTab\"]/div[2]/div[2]/div[1]/h3/div")
+	public WebElement editProfile ;
+	
+	@FindBy(xpath="//iframe[(@id='contactInfoContentId')]")
+	public WebElement iframe ;
+	
+	@FindBy(xpath="//*[@id=\"aboutTab\"]/a")
+	public WebElement aboutTab ;
+	
+	@FindBy(id="lastName")
+	public WebElement lastName ;
+	
+	@FindBy(xpath="//*[@id=\"TabPanel\"]/div/div[2]/form/div/input[1]")
+	public WebElement saveAll ;
+	
+	
+	
+	
+	
+	
+}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+

@@ -1,0 +1,14 @@
+package Javaexam;
+
+public class Q21ReverseWords {
+
+	public static void main(String[] args) {
+		String s="Java Code";
+		String s1=s.replace("Java", "");
+		String s2=s.replace("Code", "");
+		String s3=s2.concat(s1);
+		System.out.println(s3);
+	}
+
+}
+;

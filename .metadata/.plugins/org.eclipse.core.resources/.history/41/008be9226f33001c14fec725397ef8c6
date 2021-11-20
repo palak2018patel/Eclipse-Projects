@@ -1,0 +1,12 @@
+package Javaexam;
+
+public class Q8String {
+
+	public static void main(String[] args) {
+		String s="I AM JAVA PROGRAMMER.";
+		System.out.println("Given uppercase string is "+s);
+		System.out.println("Writing given string to lowercase "+s.toLowerCase());
+
+	}
+
+}

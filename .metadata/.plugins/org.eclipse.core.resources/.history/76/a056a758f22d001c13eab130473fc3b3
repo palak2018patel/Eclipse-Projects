@@ -1,0 +1,29 @@
+package Abstraction.ASSIGNMENTS;
+
+public abstract class Vehicle {
+abstract void No_of_wheels();
+abstract void seats();
+abstract int gears();
+abstract int fuel_capacity();
+void navigationSystem() {
+	System.out.println("This vehilce has Navigation System"  );
+}
+ void start(Vehicle vehicle) {
+	System.out.println("This is empty method for the bike");}
+
+ //void start(String vehicle) {
+		//System.out.println("This is a start method for the car");
+	
+//}
+
+	 
+	
+
+//public static void main (String args[]) {
+//Vehicle v=new Vehicle();//cannot create objects in an abstract class
+
+
+}
+
+	
+

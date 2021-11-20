@@ -1,0 +1,67 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class TC34 {
+	static WebDriver driver;
+	static WebDriverWait wait;	
+	static Actions action;	
+	
+	public static void main(String[] args)  throws InterruptedException{
+		 WebDriverManager.chromedriver().setup();
+		 driver =new ChromeDriver();
+		 wait = new WebDriverWait(driver,20);
+		 TC34.VerifyFirstLastNameDisplay_TC34();	
+		 action=new Actions(driver);	
+		
+	}
+	public static void VerifyFirstLastNameDisplay_TC34() throws InterruptedException{
+		driver.navigate().to("https://login.salesforce.com/");
+		System.out.println("Salesforce application is launched");
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"content\"]")));  //Thread.sleep(1000);BadPractice		
+		
+		driver.findElement(By.id("username")).sendKeys("palak@tekarch.com");
+		System.out.println("Username is entered");
+		
+		driver.findElement(By.id("password")).sendKeys("salesforce@1");
+		System.out.println(" password is entered");
+		
+		driver.findElement(By.xpath("//input[(@id='Login')]")).click();
+		System.out.println("Login done by clicking the login button");
+		System.out.println(" home page is displayed");			
+		
+		Thread.sleep(5000);	
+		driver.findElement(By.xpath("//a[(@title='Home Tab')]")).click();		
+		System.out.println("Clicked on Home Tab");
+		
+		Thread.sleep(5000);	
+		driver.findElement(By.xpath("//*[@id=\"ptBody\"]/div/div[2]/span[1]/h1/a")).click();		
+		System.out.println("Clicked on First Name Last Name Link");
+		
+		Thread.sleep(5000);
+		driver.findElement(By.xpath("//*[@id=\"chatterTab\"]/div[2]/div[2]/div[1]/h3/div")).click();
+		System.out.println("Clicked on the edit profile button");		
+		
+		
+		System.out.println("switch to iframe");
+		Thread.sleep(5000);
+		WebElement myFrame1=driver.findElement(By.xpath("//iframe[(@id='contactInfoContentId')]"));
+		driver.switchTo().frame(myFrame1);
+		driver.findElement(By.xpath("//*[@id=\"aboutTab\"]/a")).click(); 		
+		System.out.println("Clicked on the About Tab");
+		WebElement lastName=driver.findElement(By.id("lastName"));
+		lastName.clear();
+		lastName.sendKeys("Abcd");
+		System.out.println("Entered the last name");		
+		driver.findElement(By.xpath("//*[@id=\"TabPanel\"]/div/div[2]/form/div/input[1]")).click();
+		System.out.println("Clicked on save all button");			
+			
+		
+	}	
+}

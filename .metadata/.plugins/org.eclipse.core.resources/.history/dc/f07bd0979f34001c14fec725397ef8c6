@@ -1,0 +1,10 @@
+package Javaexam;
+
+public class Q18DisplayDuplicate {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

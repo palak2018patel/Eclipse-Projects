@@ -1,0 +1,45 @@
+package Abstraction.ASSIGNMENTS;
+
+public class Car extends Vehicle {
+
+	@Override
+	void No_of_wheels() {
+				System.out.println("Car has 4 wheels");
+	}
+	@Override
+	void seats() {
+		System.out.println("Car has 5 seats");	//return 5;
+	}
+	@Override
+	int gears() {
+			return 4;
+	}	
+	void propogation() {
+		System.out.println("car moves automatically after being started.");
+	}
+	@Override
+	int fuel_capacity() {
+				return 50;
+	}	
+	void turning_radius() {
+	System.out.println(" The car has double turning radius");
+	}
+	void start(Vehicle jaguar) {
+		System.out.println("This is a start method for the car");
+	
+}
+
+
+public static void main (String args[]) {
+Vehicle v1=new Car();
+Car jaguar=new Car();
+jaguar.seats();
+jaguar.No_of_wheels();
+jaguar.navigationSystem();
+jaguar.gears();
+jaguar.start(jaguar);
+v1.start(jaguar);
+}
+}
+
+

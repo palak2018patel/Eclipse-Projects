@@ -1,0 +1,156 @@
+package sfdc.tests;
+
+import java.io.IOException;
+
+import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+import sfdc.pages.HomeTabPage;
+import sfdc.pages.LeadsPage;
+
+public class HomeTab extends BaseTest {
+	static HomeTabPage homeTabPage;
+	
+	@BeforeSuite
+	public void setUp(String browserName) throws Exception  {		
+		//initializeLogging();		
+		 driver= getDriver("chrome");
+		 homeTabPage = new HomeTabPage(driver);			 
+		 initializeReport();			
+	}		
+	//@Parameters("env name")
+	@BeforeTest
+	public void launchApp() throws IOException {		
+		driver.get(dataUtil.readAccounts("prod.url"));
+		bu.waitForElement(loginPage.eUserName,driver);
+		//WebElement userName =driver.findElement(By.name("username"));
+		//bu.waitForElement(userName,driver);
+	}
+	
+	@BeforeMethod            ////////this will always execute then how will test cases be tested for forget pw or wrong pw??????? also change to refactor style
+	public void loginToApp() throws IOException{			
+				Assert.assertTrue(loginPage.isLoginPageDisplayed());
+				bu.isElementVisible(loginPage.eUserName);
+				bu.sendText(dataUtil.readAccounts("prod.username"), loginPage.eUserName);	
+				bu.isElementVisible(loginPage.ePassword);
+				bu.sendText(dataUtil.readAccounts("prod.password1"), loginPage.ePassword);		
+				bu.clickOnElement(loginPage.eLoginButton);	
+				}	
+	
+	@Test
+	public void VerifyFirstLastNameDisplay_TC33() throws IOException{
+	
+	bu.isElementVisible(homeTabPage.homeTab);
+	bu.clickOnElement(homeTabPage.homeTab);
+	
+	bu.isElementVisible(homeTabPage.firstLastNameLink);
+	bu.clickOnElement(homeTabPage.firstLastNameLink);	
+	}	
+	
+	@Test
+	public  void VerifyFirstLastNameDisplay_TC34() throws IOException{
+	
+	bu.isElementVisible(homeTabPage.homeTab);
+	bu.clickOnElement(homeTabPage.homeTab);
+		
+	bu.isElementVisible(homeTabPage.firstLastNameLink);
+	bu.clickOnElement(homeTabPage.firstLastNameLink);
+	
+	
+	bu.isElementVisible(homeTabPage.editProfile);
+	bu.clickOnElement(homeTabPage.editProfile);
+	
+	
+	bu.isElementVisible(homeTabPage.iframe);
+	bu.switchFrame( driver,homeTabPage.iframe);
+	
+	bu.isElementVisible(homeTabPage.aboutTab);
+	bu.clickOnElement(homeTabPage.aboutTab);
+	
+	bu.isElementVisible(homeTabPage.lastName);
+	bu.clearText(homeTabPage.lastName);
+	bu.sendText(dataUtil.readAccounts("prod.Abcd"),homeTabPage.lastName );
+	
+	bu.isElementVisible(homeTabPage.saveAll);
+	bu.clickOnElement(homeTabPage.saveAll);
+	
+	}	
+	
+	@Test
+		public void BlockingEventInCalendar_TC36() throws IOException{
+		
+		bu.isElementVisible(homeTabPage.homeTab);
+		bu.clickOnElement(homeTabPage.homeTab);			
+		
+		bu.isElementVisible(homeTabPage.eCurrentDateLink);
+		bu.clickOnElement(homeTabPage.eCurrentDateLink);
+		
+		bu.isElementVisible(homeTabPage);
+		bu.clickOnElement();
+		
+		bu.isElementVisible(homeTabPage);
+		bu.clickOnElement();
+		
+		bu.isElementVisible(homeTabPage);
+		bu.clickOnElement();
+		
+		bu.isElementVisible(homeTabPage);
+		bu.clickOnElement();
+		
+		
+		
+		}
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+

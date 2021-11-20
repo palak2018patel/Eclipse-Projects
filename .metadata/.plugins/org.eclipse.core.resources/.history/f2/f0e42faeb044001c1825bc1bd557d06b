@@ -1,0 +1,84 @@
+package sfdc.tests;
+
+import java.io.IOException;
+
+import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+import sfdc.pages.LeadsPage;
+import sfdc.pages.OpportunitiesPage;
+
+public class Opportunities extends BaseTest{
+	static OpportunitiesPage optyPage;
+
+	//@Parameters("browser name")
+	@BeforeSuite
+	public void setUp(String browserName) throws Exception  {		
+		//initializeLogging();		
+		 driver= getDriver("chrome");
+		 optyPage = new OpportunitiesPage(driver);			 
+		 initializeReport();			
+	}	
+	//@Parameters("env name")
+	@BeforeTest
+	public void launchApp() throws IOException {		
+		driver.get(dataUtil.readAccounts("prod.url"));
+		bu.waitForElement(loginPage.eUserName,driver);
+		//WebElement userName =driver.findElement(By.name("username"));
+		//bu.waitForElement(userName,driver);
+	}
+	
+	@BeforeMethod            ////////this will always execute then how will test cases be tested for forget pw or wrong pw??????? also change to refactor style
+	public void loginToApp() throws IOException{			
+				Assert.assertTrue(loginPage.isLoginPageDisplayed());
+				bu.isElementVisible(loginPage.eUserName);
+				bu.sendText(dataUtil.readAccounts("prod.username"), loginPage.eUserName);	
+				bu.isElementVisible(loginPage.ePassword);
+				bu.sendText(dataUtil.readAccounts("prod.password1"), loginPage.ePassword);		
+				bu.clickOnElement(loginPage.eLoginButton);	
+				}	
+
+	@Test
+	public void selectOpportunitiesLink_TC15() throws IOException{
+	bu.isElementVisible(optyPage.optyLink);
+	bu.clickOnElement(optyPage.optyLink);	
+
+	bu.isElementVisible(optyPage.optyDropdown);
+	bu.clickOnElement(optyPage.optyDropdown);	
+
+	}
+	
+	@Test
+	public void createNewOpportunity_TC16() throws IOException{
+		bu.isElementVisible(optyPage.optyLink);
+		bu.clickOnElement(optyPage.optyLink);	
+
+		bu.isElementVisible(optyPage.optyDropdown);
+		bu.clickOnElement(optyPage.optyDropdown);	
+		
+		
+	bu.isElementVisible(optyPage.createnewoptyBtn);
+	bu.clickOnElement(optyPage.createnewoptyBtn);	
+
+	
+	bu.isElementVisible(optyPage.optyName);	
+	bu.clickOnElement(optyPage.optyName);
+	bu.clearText(optyPage.optyName);
+	bu.sendText(dataUtil.readAccounts(prod.optyName),optyPage.optyName);
+	
+	bu.isElementVisible(optyPage);
+	bu.clickOnElement();	
+
+	
+	bu.isElementVisible(optyPage);
+	bu.clickOnElement();	
+
+	
+	
+	
+	
+}
+}

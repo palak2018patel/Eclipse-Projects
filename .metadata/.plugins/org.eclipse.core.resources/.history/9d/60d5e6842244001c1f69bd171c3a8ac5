@@ -1,0 +1,12 @@
+prod.url=https://login.salesforce.com/
+prod.username = palak@tekarch.com
+prod.password1 =salesforce@1
+prod.wrongpassword =xyz
+prod.wrongPassword= 22131
+prod.wrongUserName=123
+prod.password2 =salesforce@12
+prod.lastName=Patel
+prod.textMessage=Hi all! I am using automation!
+prod.eEmailName= Palak Patel
+prod.eEmailAddress= palak2018patel@gmail.com
+

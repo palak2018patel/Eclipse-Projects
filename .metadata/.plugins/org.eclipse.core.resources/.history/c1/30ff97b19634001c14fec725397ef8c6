@@ -1,0 +1,28 @@
+package Javaexam;
+import java.util.Scanner;
+public class Q20TotalRepeatedChar {
+	public static void Counter (String s) {
+		String s1=String.valueOf(s);
+		char[]strarr=s1.toCharArray();
+		int  count=0;
+		for(int i=0;i<strarr.length;i++) {
+			
+			for(int j=i+1;j<strarr.length;j++) {
+				if(strarr[i]==strarr[j]) {
+					count=count+1;	
+					break;
+				}																
+				}				
+			}
+		System.out.println("Duplicate characters in the string "+count);
+		}
+	public static void main(String[] args) {		
+		System.out.println("Enter a string with integers and letters");
+		Scanner sc=new Scanner (System.in);
+		String str=sc.nextLine();		
+		Counter(str);		
+		sc.close();
+		
+	}
+
+}

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Suite">
+
+
+	<test name="Home">
+
+
+		<classes>
+
+<class name="sfdc.tests.Leads">
+
+
+				<methods>
+
+					<include name="LeadTab_TC20" />
+
+					<include name="LeadSelectView_TC21" />
+
+					<include name="defaultView_TC22" />
+
+					<include name="defaultView_TC23" />
+
+					<include name="newButton_TC24" />
+
+				</methods>
+
+			</class>
+
+		</classes>
+
+	</test>
+
+</suite>

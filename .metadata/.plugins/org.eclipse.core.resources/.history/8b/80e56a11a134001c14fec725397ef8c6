@@ -1,0 +1,36 @@
+package Javaexam;
+
+import java.util.Scanner;
+
+public class Q18DisplayDuplicate {
+
+	public static void main(String[] args) {
+
+		//String str="hello";
+		System.out.println("Enter a string with number,characters,upper and lower case letters :");
+        Scanner sc=new Scanner(System.in);
+        String str=sc.nextLine();	
+			char chr[]=str.toCharArray();
+			int length=chr.length;
+			StringBuilder sb= new StringBuilder();
+			boolean duplicateChar;
+			for(int i=0; i<length;i++) {
+				duplicateChar =false;
+				for (int j=i+1; j<length; j++) {
+					if (chr[i]== chr[j]) {
+						duplicateChar = true;
+						break;
+					}
+				}
+				if (duplicateChar) {
+					sb.append(chr[i]);
+				}
+				}
+			System.out.println ("The duplicate characters are "+sb);
+		
+			
+	}
+
+	}
+
+

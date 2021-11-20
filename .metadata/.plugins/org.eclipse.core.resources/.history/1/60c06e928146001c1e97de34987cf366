@@ -1,0 +1,110 @@
+package sfdc.tests;
+
+import java.io.IOException;
+
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import sfdc.pages.AllTabPage;
+import sfdc.pages.HomeTabPage;
+import sfdc.pages.LoginPage;
+import sfdc.utilities.ListenersUtilities;
+@Listeners(ListenersUtilities.class)
+
+public class AllTab extends BaseTest{
+	//static AllTabPage allTabPage;
+		
+	@BeforeSuite
+	public void setUp(String browserName) throws Exception  {		
+		//initializeLogging();		
+		 driver= getDriver("chrome");
+		 initializeReport("AllTab");			
+	}		
+	
+	@BeforeMethod
+	public void launchApp() throws IOException, InterruptedException {		
+		 driver= getDriver("chrome");
+		driver.get(dataUtil.readAccounts("prod.url"));
+		driver.manage().window().maximize();
+		allTabPage = new AllTabPage(driver);			 
+		bu.waitForElement(loginPage.eUserName,driver);
+		Thread.sleep(3000);
+		}
+	
+	@BeforeMethod            ////////this will always execute then how will test cases be tested for forget pw or wrong pw??????? also change to refactor style
+	public void loginToApp() throws IOException{			
+				Assert.assertTrue(loginPage.isLoginPageDisplayed());
+				bu.isElementVisible(loginPage.eUserName);
+				bu.sendText(dataUtil.readAccounts("prod.username"), loginPage.eUserName);	
+				bu.isElementVisible(loginPage.ePassword);
+				bu.sendText(dataUtil.readAccounts("prod.password1"), loginPage.ePassword);		
+				bu.clickOnElement(loginPage.eLoginButton);	
+				}	
+	
+	@AfterMethod
+	public void exit() {
+
+		driver.quit();
+	}
+
+	
+	@Test
+	public  void VerifyTabCustomization_TC35() throws IOException{
+	
+	bu.isElementVisible(allTabPage.eAllTab);
+	bu.clickOnElement(allTabPage.eAllTab);
+	
+	
+	bu.isElementVisible(allTabPage.eCustomizeMyTab);
+	bu.clickOnElement(allTabPage.eCustomizeMyTab);
+	
+	bu.isElementVisible(allTabPage.eSelectionTab);
+	bu.clickOnElement(allTabPage.eSelectionTab);
+	
+	bu.isElementVisible(allTabPage.eRemove);
+	bu.clickOnElement(allTabPage.eRemove);
+	
+	bu.isElementVisible(allTabPage.eSave);
+	bu.clickOnElement(allTabPage.eSave);
+	
+	bu.isElementVisible(loginPage.eUserMenu);
+	bu.clickOnElement(loginPage.eUserMenu);
+	bu.isElementVisible(homePage.eLogOut);
+	bu.clickOnElement(homePage.eLogOut);
+	
+	Assert.assertTrue(loginPage.isLoginPageDisplayed());
+	bu.isElementVisible(loginPage.eUserName);
+	bu.sendText(dataUtil.readAccounts("prod.username"), loginPage.eUserName);	
+	bu.isElementVisible(loginPage.ePassword);
+	bu.sendText(dataUtil.readAccounts("prod.password1"), loginPage.ePassword);		
+	bu.clickOnElement(loginPage.eLoginButton);
+	
+	}
+	
+}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+

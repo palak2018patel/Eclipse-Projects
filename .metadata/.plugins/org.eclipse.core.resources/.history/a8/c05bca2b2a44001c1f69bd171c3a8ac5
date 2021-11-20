@@ -1,0 +1,14 @@
+package sfdc.pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
+
+public class HomeTabPage extends BaseTest {
+	public HomeTabPage(WebDriver driver) {
+		PageFactory.initElements(driver,this);//constructor
+	}
+	
+	
+	
+
+}

@@ -1,0 +1,30 @@
+package Javaexam;
+
+public class Q18DisplayDuplicate {
+
+	public static void main(String[] args) {
+
+		String str="hello";
+			char chr[]=str.toCharArray();
+			int length=chr.length;
+			StringBuilder sb= new StringBuilder();
+			boolean duplicateChar;
+			for(int i=0; i<length;i++) {
+				duplicateChar =false;
+				for (int j=i+1; j<length; j++) {
+					if (chr[i]== chr[j]) {
+						duplicateChar = true;
+						break;
+					}
+				}
+				if (duplicateChar) {
+					sb.append(chr[i]);
+				}
+				}
+			System.out.println (sb);
+			
+	}
+
+	}
+
+

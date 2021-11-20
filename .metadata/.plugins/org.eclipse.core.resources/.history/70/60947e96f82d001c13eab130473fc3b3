@@ -1,0 +1,56 @@
+
+package Abstraction.ASSIGNMENTS;
+import java.lang.*;
+
+public class Car extends Vehicle {
+
+	@Override
+	void No_of_wheels() {
+				System.out.println("Car has 4 wheels");
+	}
+	@Override
+	void seats() {
+		System.out.println("Car has 5 seats");	//return 5;
+	}
+	@Override
+	int gears() {
+			return 4;
+	}	
+	void propogation() {
+		System.out.println("car moves automatically after being started.");
+	}
+	@Override
+	int fuel_capacity() {
+				return 50;
+	}	
+	void turning_radius() {
+	System.out.println(" The car has double turning radius");
+	}
+	void start(Vehicle vehicle) {
+		System.out.println("This is a start method for the car");
+		
+}
+	
+public static void main (String args[]) {
+//Vehicle v=new Vehicle();//compilation error, cannot create an object of the abstract class
+Car jaguar=new Car();
+Vehicle volkswagen=new Car();//but you can create objects of the child class referencing the abstract parent class
+Vehicle hero=new Bike();//and such a reference allows the new object to utilize only the inherited + override properties of the child class
+jaguar.seats();//and not the newly created properties of the child class.See volkswagen even though a car cannot access start function because it is referencing the parent class.
+jaguar.No_of_wheels();
+jaguar.navigationSystem();
+jaguar.gears();
+jaguar.start(jaguar);
+try{volkswagen.start(volkswagen);
+hero.start(hero);}catch (Exception e)
+{System.out.println (e.getMessage());}
+Car c1=new Car();
+//Bike b1=new bike();
+c1.start(new Car());
+//try{b1.start(new Car());}catch (Exception e)//why no error is showing and is opposite of Mithun Sir when c1 was there instead of b1?
+//{System.out.println(e.getMessage());}
+
+}
+}
+
+

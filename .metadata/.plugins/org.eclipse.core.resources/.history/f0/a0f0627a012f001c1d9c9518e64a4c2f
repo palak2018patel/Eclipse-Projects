@@ -1,0 +1,32 @@
+package Tim;
+
+public class Student {
+	String name;
+	int rollNo;
+	Student(String name){
+		this.name=name;
+			
+	}
+	
+	public boolean equals(Student other) {
+		if (other.name.equals(this.name)) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+
+Student s1= new Student("Tim");
+Student s2=new Student ("Joe");
+Student s3=new Student ("Tim");
+
+System.out.println(s1==s3);
+System.out.println(s1.equals(s2));
+System.out.println(s1.equals(s3));	//you can custom make a method. method equals is customised.
+}
+}
+

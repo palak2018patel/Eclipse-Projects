@@ -1,0 +1,20 @@
+package Javaexam;
+
+public class Q12Palindrome {
+	
+	public static void main(String[] args) {
+		public  boolean isPalindrome(String s) {
+			int length=s.length();
+			for(int i=0; i<length/2;i++) {
+				if(s.charAt(i)!=s.charAt(length-1-i)) {
+					return false;
+				}		
+				
+					String s1="Malayalam";
+					System.out.println("Malayalm is a palindrome"+isPalindrome(s1));	
+			}
+						
+			
+		
+	}	
+}

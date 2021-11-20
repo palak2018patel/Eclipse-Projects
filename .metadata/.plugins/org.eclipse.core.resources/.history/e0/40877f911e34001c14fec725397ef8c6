@@ -1,0 +1,27 @@
+package Javaexam;
+
+import java.util.Scanner;
+
+public class Q2FactorialNonRecursive {	
+					
+				public static void main(String[] args) {
+					long n; 
+					
+				System.out.println("Enter a number to find its factorial:");
+		        Scanner sc=new Scanner(System.in);
+		         n=sc.nextLong();
+		         if (n<=1)
+		         { long fact=1;}
+					else for(long x=2;x<=n;x++) 
+					{
+						long facto =x* (x+1);
+						long fact=fact*facto;
+					}
+		         
+		         }
+		        System.out.println("The factorial of "+n+" is: "+fact);
+		        sc.close();
+			}
+	}
+
+

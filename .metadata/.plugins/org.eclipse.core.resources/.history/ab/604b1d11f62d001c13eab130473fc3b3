@@ -1,0 +1,45 @@
+package Abstraction.ASSIGNMENTS;
+import java.io.*;
+public class Bike extends Vehicle {
+
+	@Override
+	void No_of_wheels() {
+		System.out.println("Bike has 2 wheels");
+}
+	
+	@Override
+	void seats() {
+		System.out.println("Bike  has 1 seat");
+	}
+	@Override
+	int gears() {
+		return 3;		
+	}
+	void propogation() {
+	System.out.println("Bike needs to be pedalled to move and hence is manual.");
+}
+	@Override
+	int fuel_capacity() {		
+		return 20;
+	}
+	void Maxspeed() {
+		System.out.println("The maximum speed this bike can reach is 15km/hr");
+	}
+
+	//public static void main (String args[]) {
+	//Vehicle v=new Vehicle():// Cannot create an object of the abstract class.-Compilation error
+		//Bike Jetson=new Bike();
+		//Vehicle Jetson=new Bike();
+		//Jetson.No_of_wheels();
+		//Jetson.fuel_capacity();
+		//Jetson.seats();			
+		
+	//	Jetson.start(); 
+		  } 
+		  
+		
+		
+		
+		
+	
+

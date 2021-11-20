@@ -1,0 +1,33 @@
+
+import java.util.*;
+
+public class Practicescanner {
+
+	public static void main(String[] args) {
+		/*Scanner reader= new Scanner(System.in);
+		System.out.println("Enter your name,");
+		String Username= reader.nextLine();
+		System.out.println("Entered name is; " +Username);
+		reader.close();*/
+		
+		/*System.out.println("Enter your name,");
+		Scanner reader= new Scanner(System.in);
+		String name= reader.nextLine();
+		System.out.println("Entered name is; " +name);
+		reader.close();*/
+		
+		System.out.println("Enter first number:");
+		Scanner No= new Scanner(System.in);
+		int Num1=No.nextInt();
+		System.out.println("Enter the second number:");
+		int Num2=No.nextInt();
+		int Sum=Num1+Num2;
+		System.out.println("The sum of two numbers is"+Sum);
+		
+		No.close();
+		
+		
+
+	}
+
+}

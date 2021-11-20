@@ -1,0 +1,11 @@
+package Javaexam;
+
+public class Q22IntToString {
+
+	public static void main(String[] args) {
+		int number=-1234;
+		String s=String.valueOf(number);
+		System.out.println("Using value of method"+s);
+	}
+
+}

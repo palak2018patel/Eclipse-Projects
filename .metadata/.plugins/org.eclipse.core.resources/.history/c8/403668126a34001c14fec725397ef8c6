@@ -1,0 +1,39 @@
+package Javaexam;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Q30LongestPalindrome {
+	
+		private static boolean palindrome(String s1) {
+			{
+				int length=s1.length();
+				for(int i=0; i<length/2;i++) {
+					if(s1.charAt(i)!=s1.charAt(length-1-i)) {
+						return false;
+					}	
+					return true;
+					}
+			}
+			return false;
+
+	}
+		Scanner sc=new Scanner(System.in);
+		System.out.print("Enter two palindrome strings");
+		
+		String s=sc.nextLine();
+		String []strArray=s.split("\\s+");
+		ArrayList<String>arr=new ArrayList<String>();{
+		for( int i=0;i<strArray.length;i++){
+			String s=strArray[i];
+			System.out.println("String "+s+"is Palindrome"+palindrome(s));
+			arr.add(s);
+		}
+		}
+		
+		
+		
+		}
+		
+
+
